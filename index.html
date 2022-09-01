@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      span {
+        color: #c8b273;
+      }
+      .button {
+        background-color: #7a7373;
+        color: #fff;
+        padding: 6px;
+        border: 0;
+        transition: all 0.22s ease;
+        text-align: center;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .disable {
+        background: #c8b273;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span>Kargo ve vergiler ödeme sayfasında hesaplanacaktır</span>
+
+      <div>
+        <input type="checkbox" onchange="buttonColor()" id="input-1" />
+        <label for="">
+          Ön Bilgilendirme Formunu ve Mesafe Satış Sözleşmesini okudum ve
+          şartları kabul ediyorum.</label
+        >
+      </div>
+      <div>
+        <input type="checkbox" onchange="buttonColor()" id="input-2" />
+        <label for="">
+          Ön Bilgilendirme Formunu ve Mesafe Satış Sözleşmesini okudum ve
+          şartları kabul ediyorum.</label
+        >
+      </div>
+
+      <a
+        href="https://ponetmaison.com/cart"
+        id="btn"
+        class="button"
+        type="button"
+        >ÖDEMEYE GİT</a
+      >
+    </div>
+    <script>
+      const buttonColor = () => {
+        const button = document.getElementById("btn");
+        const checkbox1 = document.getElementById("input-1");
+        const checkbox2 = document.getElementById("input-2");
+
+        if (checkbox1.checked && checkbox2.checked) {
+          button.classList.add("disable");
+        } else {
+          button.classList.remove("disable");
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const checkbox1 = document.getElementById("input-1");
+        const checkbox2 = document.getElementById("input-2");
+        document.getElementById("btn").addEventListener("click", () => {
+          if (!checkbox1.checked || !checkbox2.checked) {
+            event.preventDefault();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
